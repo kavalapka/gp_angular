@@ -18,11 +18,11 @@
         <div class="form" ng-controller="summController">
             <div class="form-group">
                 <label for="1s" class="col-xs-12 col-sm-2"> First Summand</label>
-                <input type="number" id="1s" ng-model="summing.firstN" placeholder="Enter a number">
+                <input type="number" id="1s" ng-model="firstN" placeholder="Enter a number">
             </div>
             <div class="form-group">
                 <label for="2s" class="col-xs-12 col-sm-2"> Second Summand</label>
-                <input type="number" id="2s" ng-model="summing.secondN" placeholder="Enter a number">
+                <input type="number" id="2s" ng-model="secondN" placeholder="Enter a number">
             </div>
             <div class="form-group">
                 <label class="col-xs-12 col-sm-2"> Summ of nambers</label>
@@ -37,5 +37,6 @@
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="../bower_components/underscore/underscore-min.js"></script>
 </body>
 </html>
