@@ -59,8 +59,20 @@ angular.module('angularGPApp', ['ui.router', 'ngResource'])
 
         currencyService.getCurrency().$promise.then(function(curr){
             console.log('Curr: ', curr);
-            $scope.AUD = curr.rates.AUD;
+            $scope.selectedCurrency = 'AUD';
+            $scope.rates = curr.rates;
+            $scope.onChangeCurrency('AUD');
         });
+
+        $scope.onChangeCurrency = function(newCurrency){
+            $scope.selectedRate = $scope.rates[newCurrency];
+            $scope.selectedCurrency = newCurrency;
+        }
+
+
+        $scope.getConverted = function(){
+            return (($scope.firstN + $scope.secondN)*$scope.selectedRate).toFixed(2);
+        }
 
     }])
 
