@@ -13,13 +13,33 @@
 
 </head>
 <body>
-    <div class="container">
-        <header class="jumbotron">
-            <h3> Sum Applicatopn </h3>
-            <li><a ui-sref="app"> Home page </a></li>
-            <li><a ui-sref="angularGPApp({f: 1, s: 1})"> Go to summ application</a></li>
-        </header>
-    </div>
+    <header class="jumbotron">
+        <div class="container">
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-sm-4">
+                    <h3> Sum Applicatopn </h3>
+                    <li><a ui-sref="app"> Home page </a></li>
+                    <li><a ui-sref="angularGPApp({f: 1, s: 1})"> Go to summ application</a></li>
+                </div>
+                <div class="col-xs-12 col-sm-5 col-sm-offset-2">
+                    <div class="col-xs-12" ng-controller="funnyGame">
+                        <div class="col-xs-12">
+                            <h3>Funny string!</h3>
+                            <label for="game">Input string to make it funny!</label>
+                        </div>
+                        <div class="col-xs-12">
+                            <input class="col-xs-12 col-sm-8" type="text" id="game" ng-model="funny_string">
+                        </div>
+                        <div class="col-xs-12">
+                            <div ng-if="funny_string">{{getFunnyString(funny_string)}}</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
 
 
     <div ui-view></div>

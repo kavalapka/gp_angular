@@ -42,8 +42,32 @@ angular.module('angularGPApp', ['ui.router'])
         console.log('arguments: ', arguments);
         $scope.updateUrl = function(){
             $state.go('angularGPApp', {f: $scope.firstN, s: $scope.secondN});
-        }
+        };
         $scope.firstN = parseInt($stateParams.f);
         $scope.secondN = parseInt($stateParams.s);
-    }]);
+    }])
+
+    .controller('funnyGame', ['$scope', function($scope){
+        $scope.funny_string = "";
+        $scope.showRes = false;
+
+        var fency =  function(str){
+            var str1 = str.split(' ');
+            var arr = [];
+
+            for(var i = 0; i < str1.length; i++) {
+                var a = str1[i][0].toUpperCase() + str1[i].slice(1);
+                arr[i] = a;
+            }
+            return arr.join(" ");
+        };
+
+        var exclaim = function(statement){
+            return statement + '!'
+        };
+
+        $scope.getFunnyString = _.compose(exclaim,fency);
+
+
+}])
 ;
