@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularGPApp', ['ui.router'])
+angular.module('angularGPApp', ['ui.router', 'ngResource'])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 
@@ -38,13 +38,30 @@ angular.module('angularGPApp', ['ui.router'])
         };
     })
 
-    .controller('summController', ['$scope', '$stateParams', '$state', function($scope, $stateParams, $state) {
+    .constant("baseURL", "http://api.fixer.io/latest")
+
+    .service('currencyService', ['$resource', 'baseURL', function($resource, baseURL) {
+
+        this.getCurrency = function() {
+            return $resource(baseURL).get();
+        };
+
+    }])
+
+    .controller('summController', ['$scope', '$stateParams', '$state', 'currencyService',
+        function($scope, $stateParams, $state, currencyService) {
         console.log('arguments: ', arguments);
         $scope.updateUrl = function(){
             $state.go('angularGPApp', {f: $scope.firstN, s: $scope.secondN});
         };
         $scope.firstN = parseInt($stateParams.f);
         $scope.secondN = parseInt($stateParams.s);
+
+        currencyService.getCurrency().$promise.then(function(curr){
+            console.log('Curr: ', curr);
+            $scope.AUD = curr.rates.AUD;
+        });
+
     }])
 
     .controller('funnyGame', ['$scope', function($scope){
@@ -67,7 +84,11 @@ angular.module('angularGPApp', ['ui.router'])
         };
 
         $scope.getFunnyString = _.compose(exclaim,fency);
+        }])
 
 
-}])
+
+
+
+
 ;
