@@ -11,7 +11,7 @@ angular.module('gpApp', ['ui.router', 'ngResource'])
 
             .state('sum', {
                 url: 'summ/:f/:s/',
-                templateUrl: '../views/summ.html',
+                templateUrl: './views/summ.html',
                 controller: 'summController',
             });
 

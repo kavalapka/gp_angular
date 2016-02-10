@@ -29,7 +29,7 @@ gulp.task('clean', function() {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-    gulp.start('usemin', 'imagemin','copyfonts');
+    return gulp.start('usemin', 'imagemin','copyfonts');
 });
 
 gulp.task('usemin',['jshint'], function () {
@@ -40,6 +40,13 @@ gulp.task('usemin',['jshint'], function () {
       }))
       .pipe(gulp.dest('dist/'));
 });
+
+gulp.task('clean-gh-pages', function(){
+    return del(['./gh-pages/*']);
+})
+gulp.task('gh-pages', ['clean-gh-pages', 'clean', 'usemin', 'imagemin', 'copyfonts'], function() {
+    return gulp.src('./dist/**/*').pipe(gulp.dest('./gh-pages/'));
+})
 
 // Images
 gulp.task('imagemin', function() {
@@ -61,19 +68,11 @@ gulp.task('watch', ['browser-sync'], function() {
   // Watch .js files
   gulp.watch('{app/scripts/**/*.js,app/styles/**/*.css,app/**/*.html}', ['usemin']);
       // Watch image files
-  //gulp.watch('app/images/**/*', ['imagemin']);
+  gulp.watch('app/images/**/*', ['imagemin']);
 
 });
 
 gulp.task('browser-sync', ['default'], function () {
-//   var files = [
-//      'app/**/*.html',
-//      'app/styles/**/*.css',
-//      'app/images/**/*.png',
-//      'app/scripts/**/*.js',
-//      'dist/**/*',
-//       'bower_components/**/*',
-//   ];
     var files = [
         'app/**/*.html',
         'app/scripts/**/*.js',
@@ -83,8 +82,6 @@ gulp.task('browser-sync', ['default'], function () {
 
    browserSync.init(files, {
       server: {
-         //baseDir: ".",
-         //index: "dist/index.html"
          baseDir: "dist",
          index: "index.html"
       }
