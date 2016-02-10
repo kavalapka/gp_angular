@@ -6,7 +6,7 @@ angular.module('gpApp', ['ui.router', 'ngResource'])
 
             .state('app', {
                 url: '/',
-                template: '<h3> HOME </h3>',
+                template: '',
             })
 
             .state('sum', {
