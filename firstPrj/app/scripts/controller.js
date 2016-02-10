@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('angularGPApp')
+angular.module('gpApp')
 
     .controller('summController', ['$scope', '$stateParams', '$state', 'currencyService',
         function($scope, $stateParams, $state, currencyService) {
         console.log('arguments: ', arguments);
         $scope.updateUrl = function(){
-            $state.go('angularGPApp', {f: $scope.firstN, s: $scope.secondN});
+            $state.go('sum', {f: $scope.firstN, s: $scope.secondN});
         };
         $scope.firstN = parseInt($stateParams.f);
         $scope.secondN = parseInt($stateParams.s);
@@ -21,12 +21,12 @@ angular.module('angularGPApp')
         $scope.onChangeCurrency = function(newCurrency){
             $scope.selectedRate = $scope.rates[newCurrency];
             $scope.selectedCurrency = newCurrency;
-        }
+        };
 
 
         $scope.getConverted = function(){
             return (($scope.firstN + $scope.secondN)*$scope.selectedRate).toFixed(2);
-        }
+        };
 
     }])
 
@@ -46,7 +46,7 @@ angular.module('angularGPApp')
         };
 
         var exclaim = function(statement){
-            return statement + '!'
+            return statement + '!';
         };
 
         $scope.getFunnyString = _.compose(exclaim,fency);

@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('angularGPApp')
+angular.module('gpApp')
 
     .directive('ktSum', function() {
         /*let getSumm = function($scope) {

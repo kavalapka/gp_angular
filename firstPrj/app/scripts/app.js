@@ -1,19 +1,17 @@
 'use strict';
 
-angular.module('angularGPApp', ['ui.router', 'ngResource'])
+angular.module('gpApp', ['ui.router', 'ngResource'])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 
             .state('app', {
                 url: '/',
-                views: {
-                    templateUrl: 'index.html',
-                }
+                template: '<h3> HOME </h3>',
             })
 
-            .state('angularGPApp', {
-                url: '/summ/:f/:s/',
-                templateUrl: 'app/views/summ.html',
+            .state('sum', {
+                url: 'summ/:f/:s/',
+                templateUrl: '../views/summ.html',
                 controller: 'summController',
             });
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularGPApp')
+angular.module('gpApp')
 
     .constant("baseURL", "http://api.fixer.io/latest")
 

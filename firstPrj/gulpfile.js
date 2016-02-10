@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 
 
 gulp.task('jshint', function() {
-  return gulp.src('app/scripts/**/*.js')
+  return gulp.src('./app/scripts/**/*.js')
   .pipe(jshint())
   .pipe(jshint.reporter(stylish));
 });
@@ -61,24 +61,32 @@ gulp.task('watch', ['browser-sync'], function() {
   // Watch .js files
   gulp.watch('{app/scripts/**/*.js,app/styles/**/*.css,app/**/*.html}', ['usemin']);
       // Watch image files
-  gulp.watch('app/images/**/*', ['imagemin']);
+  //gulp.watch('app/images/**/*', ['imagemin']);
 
 });
 
 gulp.task('browser-sync', ['default'], function () {
-   var files = [
-      'app/**/*.html',
-      'app/styles/**/*.css',
-      'app/images/**/*.png',
-      'app/scripts/**/*.js',
-      'dist/**/*',
-       'bower_components/**/*',
+//   var files = [
+//      'app/**/*.html',
+//      'app/styles/**/*.css',
+//      'app/images/**/*.png',
+//      'app/scripts/**/*.js',
+//      'dist/**/*',
+//       'bower_components/**/*',
+//   ];
+    var files = [
+        'app/**/*.html',
+        'app/scripts/**/*.js',
+        'dist/**/*',
+        'bower_components/**/*',
    ];
 
    browserSync.init(files, {
       server: {
-         baseDir: ".",
-         index: "dist/index.html"
+         //baseDir: ".",
+         //index: "dist/index.html"
+         baseDir: "dist",
+         index: "index.html"
       }
    });
         // Watch any files in dist/, reload on change

@@ -1,5 +1,5 @@
 {
-  "name": "GPSumm App",
+  "name": "GPSummApp",
   "private": true,
   "devDependencies": {
     "browser-sync": "^2.11.1",
@@ -14,8 +14,8 @@
     "gulp-ng-annotate": "^1.1.0",
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
-    "gulp-rev": "^6.0.1",
-    "gulp-uglify": "^1.5.1",
+    "gulp-rev": "^7.0.0",
+    "gulp-uglify": "^1.5.2",
     "gulp-usemin": "^0.3.20",
     "jasmine-core": "^2.4.1",
     "jshint": "^2.9.1",
