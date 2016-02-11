@@ -23,7 +23,6 @@ angular.module('gpApp')
             $scope.selectedCurrency = newCurrency;
         };
 
-
         $scope.getConverted = function(){
             return (($scope.firstN + $scope.secondN)*$scope.selectedRate).toFixed(2);
         };
@@ -32,7 +31,6 @@ angular.module('gpApp')
 
     .controller('funnyGame', ['$scope', function($scope){
         $scope.funny_string = "";
-        $scope.showRes = false;
 
         var fency =  function(str){
             var str1 = str.split(' ');
