@@ -6,7 +6,7 @@ angular.module('gpApp')
         function($scope, $stateParams, $state, currencyService) {
         console.log('arguments: ', arguments);
         $scope.updateUrl = function(){
-            $state.go('sum', {f: $scope.firstN, s: $scope.secondN});
+            $state.go('sumApp', {f: $scope.firstN, s: $scope.secondN});
         };
         $scope.firstN = parseInt($stateParams.f);
         $scope.secondN = parseInt($stateParams.s);

@@ -6,18 +6,18 @@ angular.module('gpApp', ['ui.router', 'ngResource'])
 
             .state('app', {
                 url: '/',
-                template: '',
+                template: ''
             })
 
-            .state('sum', {
-                url: 'summ/:f/:s/',
-                templateUrl: './views/summ.html',
-                controller: 'summController',
+            .state('sumApp', {
+                url: '/summ/:f/:s/',
+                templateUrl: 'views/summ.html',
+                controller: 'summController'
             });
 
-        //$urlRouterProvider.otherwise('/');
-        console.log($stateProvider);
-        console.log($urlRouterProvider);
+        $urlRouterProvider.otherwise('/');
+        //console.log($stateProvider);
+        //console.log($urlRouterProvider);
     })
 
 ;
