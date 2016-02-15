@@ -12,25 +12,22 @@ angular.module('gpApp')
             $scope.rates = response.rates;
         });
 
-        $scope.selectedCurrency = 'AUD';
-            console.log('SC1', $scope.selectedCurrency);
 
-        $scope.firstN = parseInt($stateParams.f);
-        $scope.secondN = parseInt($stateParams.s);
-
+        $scope.selectedCurrency = $stateParams.cu;
+        $scope.firstN = parseInt($stateParams.f, 10);
+        $scope.secondN = parseInt($stateParams.s, 10);
 
 
-            $scope.$watchGroup(['firstN', 'secondN'], function(){
-                console.log('Watcher works!', $scope.firstN, $scope.secondN);
-                $state.go('sumApp', {f: $scope.firstN, s: $scope.secondN});
-                $scope.sumOfNumbers = $scope.firstN + $scope.secondN;
+        $scope.$watchGroup(['firstN', 'secondN', 'selectedCurrency'], function(){
+            console.log('Watcher works!', $scope.firstN, $scope.secondN);
+            $state.go('sumApp', {cu: $scope.selectedCurrency, f: $scope.firstN, s: $scope.secondN});
+            $scope.sumOfNumbers = $scope.firstN + $scope.secondN;
 
-            });
+        });
 
         $scope.getConverted = function(newCurrency){
             $scope.selectedRate = $scope.rates[newCurrency];
             $scope.selectedCurrency = newCurrency;
-            console.log('SC2', $scope.selectedCurrency);
             return (($scope.firstN + $scope.secondN)*$scope.selectedRate).toFixed(2);
         };
 
