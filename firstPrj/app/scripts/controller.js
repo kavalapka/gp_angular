@@ -15,15 +15,10 @@ angular.module('gpApp')
             console.log('Curr: ', curr);
             $scope.selectedCurrency = 'AUD';
             $scope.rates = curr.rates;
-            $scope.onChangeCurrency('AUD');
         });
 
-        $scope.onChangeCurrency = function(newCurrency){
+        $scope.getConverted = function(newCurrency){
             $scope.selectedRate = $scope.rates[newCurrency];
-            $scope.selectedCurrency = newCurrency;
-        };
-
-        $scope.getConverted = function(){
             return (($scope.firstN + $scope.secondN)*$scope.selectedRate).toFixed(2);
         };
 

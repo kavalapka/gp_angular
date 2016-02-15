@@ -11,15 +11,10 @@
         <div class="form-group">
             <label class="col-xs-12 col-sm-2"> Summ of numbers</label>
             <kt-sum sum="{{firstN+secondN}}"></kt-sum>
-            <select ng-model="selectedCurrency"
-                    ng-change="onChangeCurrency(selectedCurrency)">
-                <option ng-selected="{{rate == selectedCurrency}}"
-                        ng-repeat="(rate, value) in rates"
-                        value="{{rate}}">
-                    {{rate}}
-                </option>
+            <select ng-options="rate as rate for (rate, value) in rates"
+                    ng-model="selectedCurrency">
             </select>
-            <span ng-if="selectedCurrency">{{getConverted()}}</span>
+            <span ng-if="selectedCurrency">{{getConverted(selectedCurrency)}}</span>
         </div>
     </div>
 </div>
