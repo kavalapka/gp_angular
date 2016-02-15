@@ -11,10 +11,10 @@ angular.module('gpApp')
         $scope.firstN = parseInt($stateParams.f);
         $scope.secondN = parseInt($stateParams.s);
 
-        currencyService.getCurrency().$promise.then(function(curr){
-            console.log('Curr: ', curr);
+        currencyService.getCurrency().$promise.then(function(response){
+            console.log('getCurrency Success Callback: ', response);
             $scope.selectedCurrency = 'AUD';
-            $scope.rates = curr.rates;
+            $scope.rates = response.rates;
         });
 
         $scope.getConverted = function(newCurrency){
