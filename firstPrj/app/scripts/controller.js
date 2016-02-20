@@ -19,7 +19,6 @@ angular.module('gpApp')
 
 
         $scope.$watchGroup(['firstN', 'secondN', 'selectedCurrency'], function(){
-            console.log('Watcher works!', $scope.firstN, $scope.secondN);
             $state.go('sumApp', {cu: $scope.selectedCurrency, f: $scope.firstN, s: $scope.secondN});
             $scope.sumOfNumbers = $scope.firstN + $scope.secondN;
 
@@ -28,7 +27,7 @@ angular.module('gpApp')
         $scope.getConverted = function(newCurrency){
             $scope.selectedRate = $scope.rates[newCurrency];
             $scope.selectedCurrency = newCurrency;
-            return (($scope.firstN + $scope.secondN)*$scope.selectedRate).toFixed(2);
+            return ($scope.sumOfNumbers * $scope.selectedRate).toFixed(2);
         };
 
     }])
